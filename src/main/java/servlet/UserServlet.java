@@ -41,7 +41,7 @@ public class UserServlet extends HttpServlet {
                 session.setAttribute("authority",authority);
                 if (authority.equals("0")) {
                     request.setAttribute("msg","登录成功");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("personalInfo.jsp").forward(request, response);
                 } else{
                     request.setAttribute("msg","登录成功");
                     request.getRequestDispatcher("index.jsp").forward(request, response);

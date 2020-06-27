@@ -42,8 +42,8 @@
             <nav>
                 <ul>
                     <li><a href="index.jsp" class="active">首页</a></li>
-                    <li><a href="ShowShoppingCat">购物车</a></li>
-                    <li><a href="ShowGoods">商品栏</a></li>
+                    <li><a href="CartsServlet">购物车</a></li>
+                    <li><a href="GoodsShowServlet">商品栏</a></li>
                     <li><a href="personalInfo.jsp">个人中心</a></li>
                 </ul>
             </nav>
@@ -59,6 +59,12 @@
     </div>
 </header>
 
-
+<div class="model" style="display: flex;width: 850px;justify-items: center;justify-content: space-around">
+    <figure><img src="images/1.png"></figure>
+    <figure><img src="images/1.png"></figure>
+    <figure><img src="images/1.png"></figure>
+    <figure><img src="images/1.png"></figure>
+    <figure><img src="images/1.png"></figure>
+</div>
 </body>
 </html>

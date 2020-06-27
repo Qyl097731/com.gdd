@@ -101,7 +101,7 @@
                 密码：<input type="password" name="password" id="password-r" placeholder="密码&nbsp;password">
             </label>
             <label for="tel-r">
-                密码：<input type="text" name="tel" id="tel-r" placeholder="电话&nbsp;tel">
+                电话：<input type="text" name="tel" id="tel-r" placeholder="电话&nbsp;tel">
             </label>
             <span class="passwordError-r"></span>
             <label for="submit-r" class="submitLab">

@@ -47,7 +47,7 @@
                 location.href = ("getInfo");
             })
             $(".fun li:eq(1)").click(function () {
-                // location.href=("getInfo");
+                location.href=("OrderServlet");
             })
             if (${not empty msg}) {
                 alert('${msg}');
@@ -68,14 +68,18 @@
 <header>
     <div class="page-nav" style="border-bottom: 1px solid black">
         <div class="page-con">
-            <nav>
-                <ul>
-                    <li><a href="index.jsp">首页</a></li>
-                    <li><a href="ShowShoppingCat">购物车</a></li>
-                    <li><a href="ShowGoods">商品栏</a></li>
-                    <li><a href="personalInfo.jsp" class="active">个人中心</a></li>
-                </ul>
-            </nav>
+            <c:if test="${authority=='1'}">
+                <nav>
+                    <ul>
+                        <li><a href="index.jsp">首页</a></li>
+                        <li><a href="CartsServlet">购物车</a></li>
+                        <li><a href="GoodsShowServlet">商品栏</a></li>
+                        <li><a href="personalInfo.jsp" class="active">个人中心</a></li>
+                    </ul>
+                </nav>
+            </c:if>
+
+
             <div class="statue">
                 <c:if test="${empty authority}">
                     <a href="userLogin.jsp">登录</a>
@@ -93,7 +97,7 @@
             <li>修改个人信息</li>
             <li>查询订单</li>
             <c:if test="${authority=='0'}">
-                <li onclick="$('.result .form,table').hide();$('.result form:eq(0)').show()">按照id查询订单</li>
+                <li onclick="$('.result .form,table').hide();$('.result form:eq(0)').show()">按照id查询物品</li>
                 <li onclick="location.href=('GoodsServlet?op=search');">下架商品</li>
                 <li onclick="$('.result .form,table').hide();$('.result form:eq(1)').show();">插入商品</li>
                 <li onclick="location.href=('GoodsServlet?op=insert-b')">批量插入商品</li>
@@ -102,7 +106,7 @@
         </ul>
     </div>
     <div class="result" style="width: 1000px;float: right">
-        <c:if test="${not empty msg}">
+        <c:if test="${not empty msg and not empty user}">
             <div class="form">
                 账号:${user.username}
                 密码:${user.password}
@@ -174,6 +178,28 @@
                             <td>${goods.goodsNum}</td>
                             <td><a href="GoodsServlet?op=delete&id=${goods.id}">下架</a></td>
                             <td><a href="GoodsServlet?op=search-id&id=${goods.id}">修改</a></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </c:if>
+        <c:if test="${not empty ordersList}">
+            <div class="result">
+                <table style="margin:50px auto;width:800px;border-collapse: collapse; text-align: center ;border: 1px solid black" border="1px" ;
+                       cellspacing="20px" ;padding="16px"
+                       cellpadding="10px">
+                    <tr>
+                        <th>序号</th>
+                        <th>名字</th>
+                        <th>货品id</th>
+                        <th>时间</th>
+                    </tr>
+                    <c:forEach items="${ordersList}" var="orders" varStatus="vs">
+                        <tr>
+                            <td>${vs.index+1}</td>
+                            <td>${orders.username}</td>
+                            <td>${orders.goodsId}</td>
+                            <td>${orders.time}</td>
                         </tr>
                     </c:forEach>
                 </table>
